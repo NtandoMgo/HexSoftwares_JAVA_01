@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List of Students</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body th:replace="layout.html :: content">
+    <h2>Students</h2>
+    <a href="/students/add" class="btn btn-primary">Add Student</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Student ID</th>
+                <th>Average</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.studentId}"></td>
+                <td th:text="${student.average}"></td>
+                <td th:text="${student.status}"></td>
+                <td>
+                    <a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-warning">Edit</a>
+                    <a th:href="@{/students/delete/{id}(id=${student.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
