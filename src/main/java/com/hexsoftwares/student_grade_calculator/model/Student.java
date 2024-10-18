@@ -1,56 +1,73 @@
 package com.hexsoftwares.student_grade_calculator.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ElementCollection;
-import javax.persistence.Table;
-
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 @Entity
-@Table(name = "students")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String name;
-
-    @Column(name = "student_id", nullable = false, unique = true)
     private String studentId;
 
     @ElementCollection
-    private List<Double> grades = new ArrayList<>();
+    private List<Double> grades;
 
     private double average;
     private String status;
 
+    // Default constructor
     public Student() {}
 
     public Student(String name, String studentId, List<Double> grades) {
         this.name = name;
         this.studentId = studentId;
-        this.grades = grades != null ? grades : new ArrayList<>();
-        calculateAverage();
-        determineStatus();
+        setGrades(grades); // Use setter to calculate average and status
     }
 
-    // Calculate average grade
     public void calculateAverage() {
-        if (!grades.isEmpty()) {
-            this.average = grades.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+        // Check if grades is null or empty
+        if (grades == null || grades.isEmpty()) {
+            this.average = 0.0;  // Assign a default value
+            this.status = "No grades available";  // Update status accordingly
         } else {
-            this.average = 0.0;  // Default value if no grades
+            // Calculate the average of the grades
+            this.average = grades.stream()
+                .filter(grade -> grade >= 0 && grade <= 100) // Ensure grades are within a valid range
+                .mapToDouble(Double::doubleValue)
+                .average()
+                .orElse(0.0); // Default to 0.0 if no valid grades exist
+            
+            // Update status based on the average
+            determineStatus();
         }
     }
 
-    // Determine if the student passed or failed
     public void determineStatus() {
-        this.status = this.average >= 50 ? "Passed" : "Failed";
+        this.status = this.average >= 50 ? "Passed" : "Failed"; // Make threshold configurable if needed
+    }
+
+    public String displayGrades() {
+        return grades != null ? grades.toString() : "No grades available";
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", studentId='" + studentId + '\'' +
+                ", grades=" + grades +
+                ", average=" + average +
+                ", status='" + status + '\'' +
+                '}';
     }
 
     // Getters and Setters
@@ -84,8 +101,8 @@ public class Student {
 
     public void setGrades(List<Double> grades) {
         this.grades = grades;
-        calculateAverage(); // Recalculate average after setting new grades
-        determineStatus();  // Recalculate status
+        calculateAverage();
+        determineStatus();
     }
 
     public double getAverage() {

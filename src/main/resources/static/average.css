@@ -1,0 +1,45 @@
+/* Add to home.css or class-average.css */
+.class-average-body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 20px;
+}
+
+.class-average-header {
+    background: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.class-average-title {
+    margin: 0;
+}
+
+.class-average-main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.class-average-result-title {
+    margin-top: 0;
+}
+
+.class-average-footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #007bff;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.class-average-footer-text {
+    margin: 0;
+}

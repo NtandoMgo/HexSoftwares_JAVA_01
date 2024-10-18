@@ -1,0 +1,95 @@
+/* student-list.css */
+
+.student-list-body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 20px;
+}
+
+.student-list-header {
+    background: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.student-list-title {
+    margin: 0;
+}
+
+.student-list-nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+.student-list-nav-item {
+    display: inline;
+    margin: 0 15px;
+}
+
+.student-list-nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+.student-list-nav-link:hover {
+    text-decoration: underline;
+}
+
+.student-list-main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.student-list-details-title {
+    margin-top: 0;
+}
+
+.student-list-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.student-list-header-row {
+    background: #007bff;
+    color: white;
+}
+
+.student-list-row {
+    background: #fff;
+}
+
+.student-list-cell {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.student-list-edit-link,
+.student-list-delete-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.student-list-edit-link:hover,
+.student-list-delete-link:hover {
+    text-decoration: underline;
+}
+
+.student-list-footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #007bff;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.student-list-footer-text {
+    margin: 0;
+}

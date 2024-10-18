@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>List of Students</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <meta charset="UTF-8">
+    <title>Students List</title>
+    <link rel="stylesheet" href="/student-list.css">
 </head>
-<body th:replace="layout.html :: content">
-    <h2>Students</h2>
-    <a href="/students/add" class="btn btn-primary">Add Student</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Student ID</th>
-                <th>Average</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="student : ${students}">
-                <td th:text="${student.name}"></td>
-                <td th:text="${student.studentId}"></td>
-                <td th:text="${student.average}"></td>
-                <td th:text="${student.status}"></td>
-                <td>
-                    <a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-warning">Edit</a>
-                    <a th:href="@{/students/delete/{id}(id=${student.id})}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<body class="student-list-body">
+    <header class="student-list-header">
+        <h1 class="student-list-title">Students List</h1>
+        <nav class="student-list-nav">
+            <ul class="student-list-nav-list">
+                <li class="student-list-nav-item"><a class="student-list-nav-link" th:href="@{/}">Home</a></li>
+                <li class="student-list-nav-item"><a class="student-list-nav-link" th:href="@{/students/add}">Add Student</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="student-list-main">
+        <h2 class="student-list-details-title">Student Details</h2>
+        <table class="student-list-table">
+            <thead>
+                <tr class="student-list-header-row">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Grades</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="student : ${students}" class="student-list-row">
+                    <td th:text="${student.id}" class="student-list-cell"></td>
+                    <td th:text="${student.name}" class="student-list-cell"></td>
+                    <td th:text="${student.grades}" class="student-list-cell"></td>
+                    <td class="student-list-cell">
+                        <a th:href="@{/students/edit/{id}(id=${student.id})}" class="student-list-edit-link">Edit</a>
+                        <a th:href="@{/students/delete/{id}(id=${student.id})}" class="student-list-delete-link" onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer class="student-list-footer">
+        <p class="student-list-footer-text">&copy; 2024 Student Grade Calculator</p>
+    </footer>
 </body>
 </html>

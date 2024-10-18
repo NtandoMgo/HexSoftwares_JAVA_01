@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+    <link rel="stylesheet" href="/home.css">
+</head>
+<body class="home-body">
+    <header class="home-header">
+        <h1 class="home-title">Student Grade Calculator</h1>
+        <nav class="home-nav">
+            <ul class="home-nav-list">
+                <li class="home-nav-item"><a class="home-nav-link" th:href="@{/}">Home</a></li>
+                <li class="home-nav-item"><a class="home-nav-link" th:href="@{/students}">View Students</a></li>
+                <li class="home-nav-item"><a class="home-nav-link" th:href="@{/students/add}">Add Student</a></li>
+                <li class="home-nav-item"><a class="home-nav-link" th:href="@{/students/class-average}">Class Average</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="home-main">
+        <section class="home-section">
+            <h2 class="home-section-title">Welcome to the Student Grade Calculator!</h2>
+            <p class="home-section-description">Use this application to manage students and their grades effectively.</p>
+        </section>
+    </main>
+    <footer class="home-footer">
+        <p class="home-footer-text">&copy; 2024 Student Grade Calculator</p>
+    </footer>
+</body>
+</html>

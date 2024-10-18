@@ -32,4 +32,15 @@ public class StudentService {
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
+
+    public double calculateClassAverage() {
+        List<Student> students = getAllStudents();
+        if (students.isEmpty()) {
+            return 0.0;
+        }
+        return students.stream()
+                .mapToDouble(Student::getAverage)
+                .average()
+                .orElse(0.0);
+    }
 }

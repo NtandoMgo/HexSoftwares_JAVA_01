@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add/Edit Student</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <meta charset="UTF-8">
+    <title th:text="${student.id == null ? 'Add Student' : 'Edit Student'}"></title>
+    <link rel="stylesheet" href="/add-student.css">
 </head>
-<body th:replace="layout.html :: content">
-    <h2 th:text="${student.id == null} ? 'Add Student' : 'Edit Student'"></h2>
-    <form th:action="@{/students/add}" th:object="${student}" method="post">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" th:field="*{name}" required>
-        </div>
-        <div class="form-group">
-            <label>Student ID</label>
-            <input type="text" class="form-control" th:field="*{studentId}" required>
-        </div>
-        <div class="form-group">
-            <label>Grades (comma separated)</label>
-            <input type="text" class="form-control" th:field="*{grades}" placeholder="e.g., 75, 80, 65" required>
-        </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-        <a href="/students" class="btn btn-secondary">Cancel</a>
-    </form>
+<body class="add-student-body">
+    <header class="add-student-header">
+        <h1 class="add-student-title" th:text="${student.id == null ? 'Add Student' : 'Edit Student'}"></h1>
+        <nav class="add-student-nav">
+            <ul class="add-student-nav-list">
+                <li class="add-student-nav-item"><a class="add-student-nav-link" th:href="@{/}">Home</a></li>
+                <li class="add-student-nav-item"><a class="add-student-nav-link" th:href="@{/students}">View Students</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="add-student-main">
+        <form th:action="@{/students/add}" th:object="${student}" method="post" class="add-student-form">
+            <input type="hidden" th:field="*{id}" />
+            <label for="name" class="add-student-label">Name:</label>
+            <input type="text" th:field="*{name}" required class="add-student-input" />
+            <br>
+            <label for="grades" class="add-student-label">Grades (comma separated):</label>
+            <input type="text" th:field="*{grades}" required class="add-student-input" />
+            <br>
+            <button type="submit" class="add-student-button">Submit</button>
+        </form>
+    </main>
+    <footer class="add-student-footer">
+        <p class="add-student-footer-text">&copy; 2024 Student Grade Calculator</p>
+    </footer>
 </body>
 </html>

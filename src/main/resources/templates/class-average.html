@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Average</title>
+    <link rel="stylesheet" href="/average.css">
+</head>
+<body class="class-average-body">
+    <header class="class-average-header">
+        <h1 class="class-average-title">Class Average</h1>
+        <nav class="class-average-nav">
+            <ul class="class-average-nav-list">
+                <li class="class-average-nav-item"><a class="class-average-nav-link" th:href="@{/}">Home</a></li>
+                <li class="class-average-nav-item"><a class="class-average-nav-link" th:href="@{/students}">View Students</a></li>
+                <li class="class-average-nav-item"><a class="class-average-nav-link" th:href="@{/students/add}">Add Student</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="class-average-main">
+        <h2 class="class-average-result-title">Class Average Result</h2>
+        <p class="class-average-result-description">The average grade for the class is:</p>
+        <h3 th:text="${average}"></h3>
+    </main>
+    <footer class="class-average-footer">
+        <p class="class-average-footer-text">&copy; 2024 Student Grade Calculator</p>
+    </footer>
+</body>
+</html>
