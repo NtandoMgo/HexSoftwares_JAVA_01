@@ -24,7 +24,14 @@ public class Student {
     private String status;
 
     // Default constructor
-    public Student() {}
+    public Student () {}
+
+    public Student(String name, String studentId, double d, String stat) {
+        this.name = name;
+        this.studentId = studentId;
+        average = d;
+        status = stat;
+    }
 
     public Student(String name, String studentId, List<Double> grades) {
         this.name = name;
@@ -111,5 +118,13 @@ public class Student {
 
     public String getStatus() {
         return status;
+    }
+
+    public void setAverage(double newGrade) {
+        average = newGrade;
+    }
+
+    public void setStatus(String newStatus) {
+        status = newStatus;
     }
 }

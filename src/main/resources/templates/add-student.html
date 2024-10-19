@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title th:text="${student.id == null ? 'Add Student' : 'Edit Student'}"></title>
     <link rel="stylesheet" href="/add-student.css">
+    <link rel="stylesheet" href="/footer-styles.css">
 </head>
 <body class="add-student-body">
     <header class="add-student-header">
@@ -18,17 +19,27 @@
     <main class="add-student-main">
         <form th:action="@{/students/add}" th:object="${student}" method="post" class="add-student-form">
             <input type="hidden" th:field="*{id}" />
+            
             <label for="name" class="add-student-label">Name:</label>
             <input type="text" th:field="*{name}" required class="add-student-input" />
             <br>
-            <label for="grades" class="add-student-label">Grades (comma separated):</label>
-            <input type="text" th:field="*{grades}" required class="add-student-input" />
+            
+            <label for="studentId" class="add-student-label">Student ID:</label>
+            <input type="text" th:field="*{studentId}" required class="add-student-input" />
             <br>
+            
+            <label for="grades" class="add-student-label">Grades (comma-separated):</label>
+            <input type="text" th:field="*{grades}" required class="add-student-input" placeholder="e.g. 85,90,78" />
+            <br>
+            
             <button type="submit" class="add-student-button">Submit</button>
         </form>
     </main>
-    <footer class="add-student-footer">
+    <!-- <footer class="add-student-footer">
         <p class="add-student-footer-text">&copy; 2024 Student Grade Calculator</p>
+    </footer> -->
+    <footer class="common-footer">
+        <p class="footer-text">&copy; 2024 Student Grade Calculator @HexSoftwares Java Programming Internship</p>
     </footer>
 </body>
 </html>

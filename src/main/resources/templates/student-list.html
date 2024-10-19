@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Students List</title>
     <link rel="stylesheet" href="/student-list.css">
+    <link rel="stylesheet" href="/footer-styles.css">
 </head>
 <body class="student-list-body">
     <header class="student-list-header">
@@ -20,17 +21,19 @@
         <table class="student-list-table">
             <thead>
                 <tr class="student-list-header-row">
-                    <th>ID</th>
                     <th>Name</th>
-                    <th>Grades</th>
+                    <th>Student ID</th>
+                    <th>Average</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="student : ${students}" class="student-list-row">
-                    <td th:text="${student.id}" class="student-list-cell"></td>
                     <td th:text="${student.name}" class="student-list-cell"></td>
-                    <td th:text="${student.grades}" class="student-list-cell"></td>
+                    <td th:text="${student.studentId}" class="student-list-cell"></td>
+                    <td th:text="${student.average}" class="student-list-cell"></td>
+                    <td th:text="${student.status}" class="student-list-cell"></td>
                     <td class="student-list-cell">
                         <a th:href="@{/students/edit/{id}(id=${student.id})}" class="student-list-edit-link">Edit</a>
                         <a th:href="@{/students/delete/{id}(id=${student.id})}" class="student-list-delete-link" onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
@@ -39,8 +42,8 @@
             </tbody>
         </table>
     </main>
-    <footer class="student-list-footer">
-        <p class="student-list-footer-text">&copy; 2024 Student Grade Calculator</p>
+    <footer class="common-footer">
+        <p class="footer-text">&copy; 2024 Student Grade Calculator @HexSoftwares Java Programming Internship</p>
     </footer>
 </body>
 </html>

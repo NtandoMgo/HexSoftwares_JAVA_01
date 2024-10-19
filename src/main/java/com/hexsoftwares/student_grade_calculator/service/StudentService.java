@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -29,6 +30,17 @@ public class StudentService {
         return studentRepository.findById(id).orElse(null);
     }
 
+    public int getTotalNumberOfStudents() {
+        return (int) studentRepository.count();
+    }
+
+    public List<Student> getTopStudents(int limit) {
+        return studentRepository.findAll().stream()
+                .sorted((s1, s2) -> Double.compare(s2.getAverage(), s1.getAverage()))
+                .limit(limit)
+                .collect(Collectors.toList());
+    }
+
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
@@ -42,5 +54,14 @@ public class StudentService {
                 .mapToDouble(Student::getAverage)
                 .average()
                 .orElse(0.0);
+    }
+
+    public void updateStudentGradeStatus(String studentId, double newGrade, String newStatus) {
+        Student student = studentRepository.findByStudentId(studentId);
+        if (student != null) {
+            student.setAverage(newGrade);
+            student.setStatus(newStatus);
+            studentRepository.save(student);
+        }
     }
 }

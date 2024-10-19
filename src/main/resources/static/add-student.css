@@ -3,6 +3,7 @@
     background-color: #f4f4f4;
     color: #333;
     padding: 20px;
+    padding-bottom: 60px; /* Ensure space for the fixed footer */
 }
 
 .add-student-header {
@@ -71,11 +72,12 @@
 .add-student-footer {
     text-align: center;
     padding: 10px 0;
-    background: #007bff;
+    background: #007bff; 
     color: white;
-    position: relative;
+    position: fixed;
     bottom: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
 }
 
 .add-student-footer-text {

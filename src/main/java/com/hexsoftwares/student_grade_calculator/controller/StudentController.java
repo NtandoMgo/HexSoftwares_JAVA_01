@@ -46,23 +46,23 @@ public class StudentController {
         return "class-average"; 
     }
 
-    // @GetMapping("/edit/{id}")
-    // public String editStudentForm(@PathVariable Long id, Model model) {
-    //     Student student = studentService.getStudentById(id);
-    //     model.addAttribute("student", student);
-    //     return "add-student";
-    // }
+    @GetMapping("/edit/{id}")
+    public String editStudentForm(@PathVariable Long id, Model model) {
+        Student student = studentService.getStudentById(id);
+        model.addAttribute("student", student);
+        return "add-student";
+    }
 
-    // @PostMapping("/edit/{id}")
-    // public String editStudent(@PathVariable Long id, @ModelAttribute Student student) {
-    //     student.setId(id);
-    //     studentService.saveStudent(student);
-    //     return "redirect:/students";
-    // }
+    @PostMapping("/edit/{id}")
+    public String editStudent(@PathVariable Long id, @ModelAttribute Student student) {
+        student.setId(id);
+        studentService.saveStudent(student);
+        return "redirect:/students";
+    }
 
-    // @GetMapping("/delete/{id}")
-    // public String deleteStudent(@PathVariable Long id) {
-    //     studentService.deleteStudent(id);
-    //     return "redirect:/students";
-    // }
+    @GetMapping("/delete/{id}")
+    public String deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudent(id);
+        return "redirect:/students";
+    }
 }
